@@ -26,7 +26,7 @@ with app.app_context():
 # テスト用View関数
 @app.route("/test")
 def test():
-    return render_template("materials/material/dice1/index.html")
+    return render_template("users/mypage.html")
 
 # topページ(教材一覧)View関数
 @app.route("/")
@@ -36,10 +36,11 @@ def top():
 # マイページView関数
 @app.route("/mypage")
 def mypage():
+    
     if 'id' in session:
         return render_template("users/mypage.html")
     else:
-        return render_template("users/login.html")
+        return redirect(url_for('login'))
 
 # ユーザー登録ページView関数
 @app.route("/register", methods=["GET", "POST"])
@@ -71,22 +72,21 @@ def login():
         name_email = request.form['name_email']
         password = request.form['password']
 
+        # 仮置き
+        return render_template("users/mypage.html")
+
         user = User.query.filter((User.name == name_email or User.email == name_email) & (User.password == password)).first()
 
         if user:
-            session['id'] = user.id
+            session['id'] = user.name
+            
             # ログインに成功した場合は/mypageにリダイレクト
-            return redirect(url_for('mypage'))
+            return render_template("users/mypage.html")
         else:
             # ログインに失敗した場合はlogin.htmlにリダイレクト
             return redirect(url_for('login')) #ログイン失敗的なメッセージ
 
     return render_template('users/login.html')
-
-
-
-
-
 
 # 403エラーページの追加
 @app.errorhandler(403)
