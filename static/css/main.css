@@ -260,3 +260,9 @@ label{
 body{
     background-color: #f5f5f5;
 }
+
+/*ログイン画面*/
+
+.login-fontsize {
+    font-size: 1.2vw;
+}

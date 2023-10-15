@@ -1,25 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="main-screen-backcolor">
-      <div>
-        <div class="form-center form-width">
-          <form id="">
-            <div class="item-center user-register padding-top-normal">
-                ログイン
-            </div>
-            <div class="mb-3 padding-bottom-little">
-              <label for="exampleInputEmail1" class="form-label">メールアドレス/ユーザー名</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div class="mb-3 padding-botton-little">
-                <label for="inputPassword5" class="form-label">パスワード</label>
-                <input type="password" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock">
-            </div>
-            <div class="item-center padding-bottom-normal">
-                <button type="submit" class="btn btn-primary">送信</button>
-            </div>
-          </form>
-        </div>
+<div class="main-screen-backcolor padding-top-normal padding-bottom-normal normal-fontsize">
+  <div class="form-center form-box box-shadow-another">
+    <form class="form-width" method="POST">
+      <div class="item-center user-register padding-top-normal padding-bottom-little">
+          ログイン
       </div>
-      <a href="{{ url_for('register') }}">新規登録はこちら</a>
-    </div>
+      <div class="mb-3 padding-bottom-little">
+        <label for="exampleInputEmail1" class="form-label">メールアドレス/ユーザー名</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="name_email">
+      </div>
+      <div class="mb-3 padding-botton-little">
+          <label for="inputPassword5" class="form-label">パスワード</label>
+          <input type="password" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock" name="password">
+      </div>
+      <div class="item-center padding-bottom-little">
+          <div><button type="submit" class="btn btn-primary">ログイン</button></div>
+      </div>
+      <div>
+          <div class="col-md-6 offset-md-9 padding-bottom-normal">
+            <a href="{{ url_for('register') }}" class="login-fontsize">未登録の方はこちら</a>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
