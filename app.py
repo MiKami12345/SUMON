@@ -33,6 +33,11 @@ def test():
 def top():
     return render_template("materials/materials_list.html")
 
+# topページ(教材一覧)View関数
+@app.route("/dice1")
+def dice1():
+    return render_template("materials/material/dice1/index.html")
+
 # マイページView関数
 @app.route("/mypage")
 def mypage():
